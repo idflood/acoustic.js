@@ -1,6 +1,6 @@
 {
   "name": "acoustic.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/acoustic.min.js",
   "keywords": [
     "microjs",
@@ -11,7 +11,6 @@
   "ignore": [
     "bower_components/",
     "example/",
-    "src/",
     ".bowerrc",
     ".eslintrc",
     "gulpfile.js"
