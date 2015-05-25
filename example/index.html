@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Acoustic.js example</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+    .container {
+      padding: 20px;
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button class="play button">Play</button>
+      <div>
+        <canvas id="canvas" class="visualizer" width="600" height="420"></canvas>
+      </div>
+    </div>
+
+    <script src="../dist/acoustic.js"></script>
+    <script>
+      var play = document.querySelectorAll('.play')[0];
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var sound = new Acoustic('audio-test.mp3', {
+        onCanPlay: function(instance) {
+          console.log("on can play");
+        }
+      });
+
+      play.addEventListener('click', function(e) {
+        sound.play();
+      });
+
+      function draw(data, legend, y_offset) {
+        ctx.font = "12px serif";
+        ctx.fillText(legend, 0, y_offset - 25);
+
+        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = 'rgb(0, 0, 0)';
+        ctx.beginPath();
+        var height = 20;
+        var offset = 50;
+        var x = 0;
+
+        for(var i = 0; i < data.timeDomainData.length; i++) {
+          var v = data.timeDomainData[i] / 128;
+          var y = v * height;
+          if(i === 0) {
+            ctx.moveTo(x, y + y_offset);
+          } else {
+            ctx.lineTo(x, y + y_offset);
+          }
+          x += 1;
+        }
+        ctx.stroke();
+
+        ctx.fillStyle = "rgb(0,0,0)";
+        ctx.fillRect (0, y_offset - 20, data.timeDomainRMS / 2, 4);
+      }
+
+      function update() {
+        sound.update();
+
+        ctx.clearRect(0, 0, 600, 420);
+
+        draw(sound.data.filters.bass, 'Bass', 100);
+        draw(sound.data.filters.mid, 'Mid', 200);
+        draw(sound.data.filters.high, 'High', 300);
+
+        window.requestAnimationFrame(update);
+      };
+
+      window.requestAnimationFrame(update);
+    </script>
+  </body>
+</html>

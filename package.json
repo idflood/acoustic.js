@@ -1,0 +1,37 @@
+{
+  "name": "acoustic.js",
+  "version": "0.0.1",
+  "description": "Simple audio js analyser",
+  "main": "dist/acoustic.min.js",
+  "license": "MIT",
+  "author": {
+    "name": "David Mignot",
+    "url": "https://github.com/idflood"
+  },
+  "scripts": {
+    "start": "gulp"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/idflood/acoustic.js.git"
+  },
+  "homepage": "https://github.com/idflood/acoustic.js",
+  "bugs": {
+    "url": "https://github.com/idflood/acoustic.js/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-eslint": "~0.12.0",
+    "babel": "~5.4.7",
+    "babel-core": "~5.4.7",
+    "babel-eslint": "~3.1.7",
+    "gulp-rename": "~1.2.2",
+    "babelify": "~6.1.1",
+    "gulp-uglify": "~1.2.0",
+    "browserify": "~10.2.1",
+    "browser-sync": "~2.7.3",
+    "run-sequence": "~1.1.0"
+  }
+}

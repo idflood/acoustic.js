@@ -1,0 +1,19 @@
+{
+  "name": "acoustic.js",
+  "version": "0.0.1",
+  "main": "./dist/acoustic.min.js",
+  "keywords": [
+    "microjs",
+    "audio",
+    "fft",
+    "analyser"
+  ],
+  "ignore": [
+    "bower_components/",
+    "example/",
+    "src/",
+    ".bowerrc",
+    ".eslintrc",
+    "gulpfile.js"
+  ]
+}
